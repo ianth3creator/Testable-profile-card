@@ -5,7 +5,7 @@ A responsive, accessible profile card built with **HTML**, **Tailwind CSS**, and
 It displays a user profile with avatar, bio, hobbies/dislikes, and dynamically updates the current time in milliseconds.
 
 ---
-
+View Live Demo ; [https://testable-profile-card.netlify.app/](https://testable-profile-card.netlify.app/)
 
 ## 🗂️ Repository
 **GitHub Repo:** [https://github.com/ianth3creator/Testable-profile-card](https://github.com/ianth3creator/Testable-profile-card)
