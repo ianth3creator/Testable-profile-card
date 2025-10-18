@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,123 +7,157 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: #f5f7fa;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  color: #e2e8f0;
 }
 
+/* CARD BASE */
 article[data-testid="test-profile-card"] {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
+  max-width: 900px;
   width: 90%;
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  padding: 2rem;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2.5rem;
+  transition: all 0.4s ease;
 }
+
 article:hover {
-  transform: scale(1.01);
+  transform: translateY(-6px);
+  box-shadow: 0 0 35px rgba(129, 140, 248, 0.7);
 }
 
-
-/* Avatar + name side by side */
+/* PROFILE HEADER */
 .profile-header {
+  flex: 1;
+  text-align: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 }
 
 .profile-header h2 {
-  color: #0078ff;
-  text-align: center;
+  color: #93c5fd;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 figure {
   margin: 0;
+  position: relative;
 }
 
 img[data-testid="test-user-avatar"] {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  border: 3px solid #0078ff;
+  border: 4px solid #6366f1;
   object-fit: cover;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+  transition: transform 0.3s ease;
 }
 
-/* Bio & Info */
-p[data-testid="test-user-bio"] {
-  text-align: center;
-  line-height: 1.6;
+img[data-testid="test-user-avatar"]:hover {
+  transform: scale(1.05);
 }
 
-/* Social Links */
-nav[data-testid="test-user-social-links"] ul {
+/* FIGCAPTION */
+figcaption {
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+/* INFO SECTION */
+.info-section {
+  flex: 2;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  list-style: none;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-a {
-  text-decoration: none;
-  color: #0078ff;
-  font-weight: 500;
-  transition: color 0.3s ease;
+h3 {
+  color: #bfdbfe;
+  margin-bottom: 0.5rem;
 }
 
-a:hover,
-a:focus {
-  color: #005fcc;
-  text-decoration: underline;
+p[data-testid="test-user-bio"] {
+  line-height: 1.7;
+  color: #e0e7ff;
 }
 
-/* Hobbies and Dislikes section */
+/* HOBBIES & DISLIKES */
 .sections {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-section h3 {
-  color: #111;
-  margin-bottom: 0.5rem;
+  gap: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
 }
 
 section ul {
   list-style: disc;
   padding-left: 1.5rem;
+  color: #c7d2fe;
 }
 
-/* Responsive Layout */
-@media (min-width: 768px) {
+section ul li {
+  margin-bottom: 0.3rem;
+}
+
+/* SOCIAL LINKS */
+nav[data-testid="test-user-social-links"] {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+  color: #60a5fa;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #a5b4fc;
+  text-shadow: 0 0 10px #6366f1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 850px) {
   article[data-testid="test-profile-card"] {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 2rem;
-  }
-
-  .profile-header {
-    flex: 1;
-  }
-
-  .info-section {
-    flex: 2;
-  }
-
-  p[data-testid="test-user-bio"] {
-    text-align: left;
+    padding: 2rem;
   }
 
   .sections {
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-section {
+    text-align: center;
+  }
+
+  p[data-testid="test-user-bio"] {
+    text-align: center;
   }
 }
