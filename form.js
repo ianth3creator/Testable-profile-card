@@ -7,16 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
     clearErrors();
     let isValid = true;
 
-    // Trim all input values
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const subject = document.getElementById("subject").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    // Regex for email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Validation checks
     if (name === "") {
       showError("name", "Full name is required.");
       isValid = false;
@@ -40,12 +37,21 @@ document.addEventListener("DOMContentLoaded", () => {
       isValid = false;
     }
 
-    // Success message
+    // Show success if valid
     if (isValid) {
       successMsg.textContent = "✅ Message sent successfully!";
       successMsg.style.display = "block";
       form.reset();
-      setTimeout(() => (successMsg.style.display = "none"), 4000);
+
+      // Fade out after a few seconds
+      setTimeout(() => {
+        successMsg.style.transition = "opacity 0.5s ease";
+        successMsg.style.opacity = "0";
+        setTimeout(() => {
+          successMsg.style.display = "none";
+          successMsg.style.opacity = "1";
+        }, 500);
+      }, 4000);
     }
   });
 
@@ -65,5 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
       el.style.display = "none";
     });
     successMsg.style.display = "none";
+    successMsg.style.opacity = "1";
   }
 });
