@@ -1,7 +1,7 @@
 # Testable-profile-card
 testable profile card assignment----Ian Nnamani
 
-A responsive, accessible profile card built with **HTML**, **Tailwind CSS**, and **Vanilla JavaScript**.  
+A responsive, accessible profile card built with **HTML**, **CSS**, and **Vanilla JavaScript**.  
 It displays a user profile with avatar, bio, hobbies/dislikes, and dynamically updates the current time in milliseconds.
 
 ---
