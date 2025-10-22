@@ -1,50 +1,69 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contactForm");
-  const successMsg = document.querySelector('[data-testid="test-contact-success"]');
+  const form = document.querySelector("[data-testid='test-contact-form']");
+  const successMsg = document.querySelector("[data-testid='test-contact-success']");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let valid = true;
+    clearErrors();
+    let isValid = true;
 
-    // Reset messages
-    document.querySelectorAll(".error").forEach(el => el.textContent = "");
-    successMsg.textContent = "";
+    // Trim all input values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-    const name = document.querySelector('[data-testid="test-contact-name"]');
-    const email = document.querySelector('[data-testid="test-contact-email"]');
-    const subject = document.querySelector('[data-testid="test-contact-subject"]');
-    const message = document.querySelector('[data-testid="test-contact-message"]');
+    // Regex for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!name.value.trim()) {
-      document.querySelector('[data-testid="test-contact-error-name"]').textContent = "Name is required.";
-      valid = false;
+    // Validation checks
+    if (name === "") {
+      showError("name", "Full name is required.");
+      isValid = false;
     }
 
-    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-    if (!email.value.trim()) {
-      document.querySelector('[data-testid="test-contact-error-email"]').textContent = "Email is required.";
-      valid = false;
-    } else if (!emailPattern.test(email.value)) {
-      document.querySelector('[data-testid="test-contact-error-email"]').textContent = "Invalid email format.";
-      valid = false;
+    if (email === "") {
+      showError("email", "Email is required.");
+      isValid = false;
+    } else if (!emailRegex.test(email)) {
+      showError("email", "Please enter a valid email address (e.g., name@example.com).");
+      isValid = false;
     }
 
-    if (!subject.value.trim()) {
-      document.querySelector('[data-testid="test-contact-error-subject"]').textContent = "Subject is required.";
-      valid = false;
+    if (subject === "") {
+      showError("subject", "Subject is required.");
+      isValid = false;
     }
 
-    if (!message.value.trim()) {
-      document.querySelector('[data-testid="test-contact-error-message"]').textContent = "Message is required.";
-      valid = false;
-    } else if (message.value.trim().length < 10) {
-      document.querySelector('[data-testid="test-contact-error-message"]').textContent = "Message must be at least 10 characters.";
-      valid = false;
+    if (message.length < 10) {
+      showError("message", "Message must be at least 10 characters long.");
+      isValid = false;
     }
 
-    if (valid) {
+    // Success message
+    if (isValid) {
       successMsg.textContent = "✅ Message sent successfully!";
+      successMsg.style.display = "block";
       form.reset();
+      setTimeout(() => (successMsg.style.display = "none"), 4000);
     }
   });
+
+  function showError(field, message) {
+    const errorEl = document.querySelector(`[data-testid="test-contact-error-${field}"]`);
+    const inputEl = document.getElementById(field);
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.style.display = "block";
+      inputEl.setAttribute("aria-describedby", errorEl.id);
+    }
+  }
+
+  function clearErrors() {
+    document.querySelectorAll("[data-testid^='test-contact-error']").forEach((el) => {
+      el.textContent = "";
+      el.style.display = "none";
+    });
+    successMsg.style.display = "none";
+  }
 });
