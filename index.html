@@ -1,79 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile Card</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <!-- PROFILE CARD -->
-  <article data-testid="test-profile-card">
-    
-    <!-- PROFILE HEADER -->
-    <div class="profile-header">
-      <figure>
-        <img 
-          src="https://placehold.co/150x150/1e293b/ffffff?text=I" 
-          alt="User avatar placeholder"
-          data-testid="test-user-avatar"
-          onerror="this.onerror=null;this.src='https://placehold.co/150x150/94a3b8/ffffff?text=Image+Error';"
-        >
-        <figcaption>Frontend Wizard</figcaption>
-      </figure>
-
-      <h2 data-testid="test-user-name">Ian Chapelle</h2>
-      <p>
-        Current Time (ms): 
-        <span data-testid="test-user-time" class="time"></span>
-      </p>
-    </div>
-
-    <!-- INFO SECTION -->
-    <div class="info-section">
-      <section>
-        <h3>About Me</h3>
-        <p data-testid="test-user-bio">
-          Frontend developer passionate about UI/UX, animation, and clean web experiences.
-          I love building visually appealing, accessible interfaces and experimenting with new
-          design ideas. I’m also deeply into coding and basketball.
-        </p>
-      </section>
-
-      <div class="sections">
-        <section>
-          <h3>Hobbies</h3>
-          <ul data-testid="test-user-hobbies">
-            <li>Creating</li>
-            <li>Basketball</li>
-            <li>Designing and Coding</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Dislikes</h3>
-          <ul data-testid="test-user-dislikes">
-            <li>Delays</li>
-            <li>Unclear communication</li>
-            <li>Messy code</li>
-          </ul>
-        </section>
-      </div>
-
-      <!-- SOCIAL LINKS -->
-      <nav data-testid="test-user-social-links">
-        <h3>Connect</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ian's Profile Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">Ian</h1>
         <ul>
-          <li><a href="https://github.com/ianth3creator" target="_blank" data-testid="test-user-social-github">GitHub</a></li>
-          <li><a href="https://x.com/web3pest?t=-WUcA6i2L1QyG7LYjGHJ2w&s=09" target="_blank" data-testid="test-user-social-twitter">Twitter/X</a></li>
-          <li><a href="https://linkedin.com/in/IanNnamani" target="_blank" data-testid="test-user-social-linkedin">LinkedIn</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-    </div>
+    </header>
 
-  </article>
+    <main>
+      <article data-testid="test-profile-card" class="profile-card">
+        <div class="profile-header">
+          <figure>
+            <img
+              src="https://avatars.githubusercontent.com/u/113622302?v=4"
+              alt="User Avatar"
+              data-testid="test-user-avatar"
+            />
+          </figure>
+          <h2 data-testid="test-user-name">Ian Nnamani</h2>
+        </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+        <p data-testid="test-user-bio">
+          Passionate Web Designer & Frontend Developer building creative,
+          responsive, and user-focused digital experiences.
+        </p>
+
+        <nav data-testid="test-user-social-links">
+          <ul>
+            <li><a href="https://github.com/ianth3creator" target="_blank">GitHub</a></li>
+            <li><a href="https://twitter.com/ianth3creator" target="_blank">Twitter</a></li>
+            <li><a href="mailto:ian@example.com">Email</a></li>
+          </ul>
+        </nav>
+
+        <div class="sections info-section">
+          <section>
+            <h3>Hobbies</h3>
+            <ul>
+              <li>Basketball </li>
+              <li> Creation anð Design </li>
+              <li>Frontend Development </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Dislikes</h3>
+            <ul>
+              <li>Slow Wi-Fi </li>
+              <li>Unfinished Projects </li>
+              <li>Bad UI </li>
+            </ul>
+          </section>
+        </div>
+
+        <footer>
+          <p>Current UNIX Time: <span data-testid="test-user-time"></span></p>
+        </footer>
+      </article>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+          </html>
